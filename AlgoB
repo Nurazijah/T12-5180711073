@@ -1,0 +1,84 @@
+#include <conio.h>
+#include <iostream>
+using namespace std;
+int main()
+{
+	int  D[20], jml, gt, h, c, k,temp;
+ulangi:
+    cout<<"\t==Program Data Sorting, Mengubah, Hapus & Searching=="<<endl;
+    cout<<"Masukkan jumlah data : "; cin>>jml;
+	if (jml>20)
+	{
+        cout<"Jumlah data melebihi batas";
+		goto ulangi;
+	}
+	else
+	{
+		for (int i=0;i<jml;i++)
+		{
+			cout<<"Masukkan data ke-"<<i+1<<" : "; cin>>D[i];
+		}
+		for(int i=jml-2;i>=0;i--)
+        {
+            for(int z=0;z<=i;z++)
+            {
+                if(D[z]>D[z+1])
+                {
+                    temp=D[z];
+                    D[z]=D[z+1];
+                    D[z+1]=temp;
+                }
+            }
+        }
+        cout<<"===Data Sorting==="<<endl;
+        cout<<"Data masukan di sorting :"<<endl;
+		for (int j=0;j<jml;j++)
+        {
+			cout<<"D["<<j<<"]="<<D[j];
+			cout<<endl;
+        }
+	}
+	cout<<"\n\n===Data Mengubah==="<<endl;
+	cout<<"Masukkan nilai data yang akan diubah : "; cin>>gt;
+	for (int g=0; g<jml; g++)
+	{
+		if (D[g]==gt)
+		{
+			cout<<"Masukkan nilai baru : "; cin>>D[g];
+		}
+	}
+	cout<<"Data setelah diubah";
+	for (int h = 0; h<jml; h++)
+	{
+		cout<<"\nD["<<h<<"]: "<<D[h];
+	}
+	cout<<"\n\n===Data Hapus==="<<endl;
+	cout<<"Masukkan nilai data yang akan dihapus : "; cin>>h;
+	for (int j=0;j<jml;j++)
+	{
+		if (h==D[j])
+		{
+			for (int k=j;k<jml;k++)
+			{
+				D[k]= D[k + 1];
+			}
+			jml -=1;
+		}
+	}
+	cout<<"Data Baru :";
+	for (int p = 0; p<jml; p++)
+	{
+		cout << "\nD[" <<p<< "]= " << D[p];
+	}
+	cout<<endl;
+	cout<<"\n\n===Data Searching==="<<endl;
+	cout<<"Masukkan nilai data yang akan dicari : "; cin>>c;
+	for (int n=0;n<jml; n++) {
+		if (c== D[n])
+            {
+			k=true;k++;
+			cout<<"Nilai "<<c<<" ditemukan pada index : "<<n<<endl;
+            }
+	}
+	if (k==0) cout<<"Data di cari tidak ada";
+}
